@@ -1,1 +1,1 @@
-# microprofile-jwtBridge
+# MicroProfile JWT Bridge
