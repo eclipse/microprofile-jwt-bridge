@@ -24,4 +24,3 @@ The MP JWT Bridge spec would have a class of certification explicitly laid out f
 * **Jakarta EE Web Profile** implementations. This class of certification caters to MP JWT implementations built on the Jakarta EE Web Profile.  Implementations need to pass the Jakarta EE Web Profile TCK, MP JWT TCK, plus all requirements in the JWT Bridge spec that apply to specifications in the Jakarta EE Web Profile. Implementations in this class are not eligible to certify as a Core Profile implementation.
 
 * **Jakarta EE Platform** implementations. This class of certification caters to MP JWT implementations built on the Jakarta EE Platform.  Implementations need to pass the Jakarta EE Platform TCK, MP JWT TCK, plus all requirements in the JWT Bridge spec that apply to specifications in the Jakarta EE Platform. Implementations in this class are not eligible to certify as a Web Profile or Core Profile implementation.
-
