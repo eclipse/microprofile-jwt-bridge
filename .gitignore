@@ -1,0 +1,21 @@
+# Intellij files
+.idea
+*.iml
+*.ipr
+*.iws
+
+*.class
+.settings/
+.checkstyle
+target/
+tck/bin/
+.project
+build/
+.classpath
+.factorypath
+test-output
+
+# Ignore a release.conf for perform_release/* script usage
+release.conf
+.vscode
+*.DS_Store
