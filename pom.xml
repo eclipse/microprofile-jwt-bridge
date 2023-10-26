@@ -34,6 +34,8 @@
         <version.microprofile.jwt.api>2.1</version.microprofile.jwt.api>
         <version.microprofile.config>3.1</version.microprofile.config>
         <version.osgi.versioning>1.1.0</version.osgi.versioning>
+        <version.jakartaee.api>10.0.0</version.jakartaee.api>
+        <version.jose4j>0.9.3</version.jose4j>
         
         <inceptionYear>2023</inceptionYear>
     </properties>
@@ -122,6 +124,16 @@
                 <groupId>org.eclipse.microprofile.config</groupId>
                 <artifactId>microprofile-config-api</artifactId>
                 <version>${version.microprofile.config}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
+                <version>${version.jakartaee.api}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bitbucket.b_c</groupId>
+                <artifactId>jose4j</artifactId>
+                <version>${version.jose4j}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
