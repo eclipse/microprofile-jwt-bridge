@@ -25,6 +25,10 @@
             </run>
         </groups>
         <classes>
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsEncryptTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsSignEncryptTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsExtraTest" />
         </classes>
     </test>
 

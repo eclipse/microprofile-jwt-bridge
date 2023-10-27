@@ -19,9 +19,11 @@
     <test name="base-tests" verbose="10">
         <groups>
             <define name="base-groups">
+                <include name="utils" description="Utility tests" />
                 <include name="ejb" description="EJB container integration tests" />
             </define>
             <define name="excludes">
+                <include name="utils-extra" description="Additional utility tests" />
             </define>
             <run>
                 <include name="base-groups" />
@@ -29,6 +31,10 @@
             </run>
         </groups>
         <classes>
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsEncryptTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsSignEncryptTest" />
+            <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsExtraTest" />
             <class name="org.eclipse.microprofile.jwt.bridge.tck.container.ejb.EjbTest" />
         </classes>
     </test>
