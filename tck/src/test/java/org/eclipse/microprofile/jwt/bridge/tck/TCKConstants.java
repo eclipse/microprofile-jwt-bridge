@@ -21,6 +21,8 @@ package org.eclipse.microprofile.jwt.bridge.tck;
 
 public class TCKConstants {
     // TestNG groups
+    public static final String TEST_GROUP_UTILS = "utils";
+    public static final String TEST_GROUP_UTILS_EXTRA = "utils-extra";
     public static final String TEST_GROUP_EJB = "ejb";
     // The expected JWT iss value
     public static final String TEST_ISSUER = "https://server.example.com";
