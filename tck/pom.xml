@@ -23,7 +23,7 @@
     </parent>
 
     <artifactId>microprofile-jwt-auth-bridge-tck</artifactId>
-    <name>MicroProfile JWT Auth Bridge TCK</name>
+    <name>MicroProfile JWT Bridge TCK</name>
 
     <dependencyManagement>
         <dependencies>
