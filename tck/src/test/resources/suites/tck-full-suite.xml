@@ -20,6 +20,7 @@
         <groups>
             <define name="base-groups">
                 <include name="utils" description="Utility tests" />
+                <include name="jaxrs" description="JAX-RS invocation tests" />
                 <include name="ejb" description="EJB container integration tests" />
                 <include name="servlet" description="Servlet container integration tests" />
                 <include name="ee-security" description="Java EE security feature tests" />
