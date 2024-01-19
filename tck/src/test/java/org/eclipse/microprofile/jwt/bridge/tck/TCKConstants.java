@@ -24,10 +24,10 @@ public class TCKConstants {
     public static final String TEST_GROUP_UTILS = "utils";
     public static final String TEST_GROUP_UTILS_EXTRA = "utils-extra";
     public static final String TEST_GROUP_JAXRS = "jaxrs";
-    public static final String TEST_GROUP_EJB = "ejb";
-    public static final String TEST_GROUP_SERVLET = "servlet";
-    public static final String TEST_GROUP_EE_SECURITY = "ee-security";
-    public static final String TEST_GROUP_JACC = "jacc";
+    public static final String TEST_GROUP_EJB = "ejb-optional";
+    public static final String TEST_GROUP_SERVLET = "servlet-optional";
+    public static final String TEST_GROUP_EE_SECURITY = "ee-security-optional";
+    public static final String TEST_GROUP_JACC = "jacc-optional";
     // The expected JWT iss value
     public static final String TEST_ISSUER = "https://server.example.com";
 
