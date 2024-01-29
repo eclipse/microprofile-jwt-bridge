@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017 Contributors to the Eclipse Foundation
+ * Copyright (c) 2016-2024 Contributors to the Eclipse Foundation
  *
  *  See the NOTICE file(s) distributed with this work for additional
  *  information regarding copyright ownership.
@@ -23,10 +23,11 @@ public class TCKConstants {
     // TestNG groups
     public static final String TEST_GROUP_UTILS = "utils";
     public static final String TEST_GROUP_UTILS_EXTRA = "utils-extra";
-    public static final String TEST_GROUP_EJB = "ejb";
-    public static final String TEST_GROUP_SERVLET = "servlet";
-    public static final String TEST_GROUP_EE_SECURITY = "ee-security";
-    public static final String TEST_GROUP_JACC = "jacc";
+    public static final String TEST_GROUP_JAXRS = "jaxrs";
+    public static final String TEST_GROUP_EJB = "ejb-optional";
+    public static final String TEST_GROUP_SERVLET = "servlet-optional";
+    public static final String TEST_GROUP_EE_SECURITY = "ee-security-optional";
+    public static final String TEST_GROUP_JACC = "jacc-optional";
     // The expected JWT iss value
     public static final String TEST_ISSUER = "https://server.example.com";
 

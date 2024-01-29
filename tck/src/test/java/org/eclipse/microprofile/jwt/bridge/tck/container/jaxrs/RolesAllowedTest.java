@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 Contributors to the Eclipse Foundation
+ * Copyright (c) 2016-2024 Contributors to the Eclipse Foundation
  *
  *  See the NOTICE file(s) distributed with this work for additional
  *  information regarding copyright ownership.
@@ -21,6 +21,7 @@ package org.eclipse.microprofile.jwt.bridge.tck.container.jaxrs;
 
 import static jakarta.ws.rs.core.MediaType.TEXT_PLAIN;
 import static org.eclipse.microprofile.jwt.bridge.tck.TCKConstants.TEST_GROUP_EE_SECURITY;
+import static org.eclipse.microprofile.jwt.bridge.tck.TCKConstants.TEST_GROUP_JAXRS;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -88,6 +89,22 @@ public class RolesAllowedTest extends Arquillian {
     @BeforeClass(alwaysRun = true)
     public static void generateToken() throws Exception {
         token = TokenUtils.generateTokenString("/Token1.json");
+    }
+
+    @RunAsClient
+    @Test(groups = TEST_GROUP_JAXRS, description = "Validate a request with MP-JWT succeeds with HTTP_OK, and replies with hello, user={token upn claim}")
+    public void callEcho() throws Exception {
+        Reporter.log("callEcho, expect HTTP_OK");
+
+        String uri = baseURL.toExternalForm() + "endp/echo";
+        WebTarget echoEndpointTarget = ClientBuilder.newClient()
+                .target(uri)
+                .queryParam("input", "hello");
+        Response response = echoEndpointTarget.request(TEXT_PLAIN).header(HttpHeaders.AUTHORIZATION, "Bearer " + token).get();
+        Assert.assertEquals(response.getStatus(), HttpURLConnection.HTTP_OK);
+        String reply = response.readEntity(String.class);
+        // Must return hello, user={token upn claim}
+        Assert.assertEquals(reply, "hello, user=jdoe@example.com");
     }
 
     /**

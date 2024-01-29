@@ -20,10 +20,7 @@
         <groups>
             <define name="base-groups">
                 <include name="utils" description="Utility tests" />
-                <include name="ejb" description="EJB container integration tests" />
-                <include name="servlet" description="Servlet container integration tests" />
-                <include name="ee-security" description="Java EE security feature tests" />
-                <include name="jacc" description="JACC API integration tests" />
+                <include name="jaxrs" description="JAX-RS invocation tests" />
             </define>
             <define name="excludes">
                 <include name="utils-extra" description="Additional utility tests" />
@@ -38,11 +35,7 @@
             <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsEncryptTest" />
             <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsSignEncryptTest" />
             <class name="org.eclipse.microprofile.jwt.bridge.tck.util.TokenUtilsExtraTest" />
-            <class name="org.eclipse.microprofile.jwt.bridge.tck.container.ejb.EjbTest" />
-            <class name="org.eclipse.microprofile.jwt.bridge.tck.container.servlet.ServletTest" />
             <class name="org.eclipse.microprofile.jwt.bridge.tck.container.jaxrs.RolesAllowedTest" />
-            <class name="org.eclipse.microprofile.jwt.bridge.tck.container.jaxrs.jwe.RolesAllowedSignEncryptTest" />
-            <class name="org.eclipse.microprofile.jwt.bridge.tck.container.jacc.SubjectTest" />
         </classes>
     </test>
 
