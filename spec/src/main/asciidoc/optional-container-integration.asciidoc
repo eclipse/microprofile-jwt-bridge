@@ -1,0 +1,57 @@
+//
+// Copyright (c) 2023-2024 Eclipse Microprofile Contributors:
+// Red Hat
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+= Mapping MP-JWT Tokens to Jakarta EE Container APIs
+
+The requirements of how a JWT should be exposed via the various Jakarta EE container APIs is discussed in this section.
+
+## Recommendations for Container Integration
+This section describes the expected behaviors for Jakarta EE container APIs other than JAX-RS.
+
+### jakarta.security.enterprise.identitystore.IdentityStore.getCallerGroups(CredentialValidationResult)
+This method should return the set of names found in the `"groups"` claim in the JWT if it exists, an empty set otherwise.
+
+### jakarta.ejb.SessionContext.getCallerPrincipal()
+The `java.security.Principal` returned from this method MUST be an instance of `org.eclipse.microprofile.jwt.JsonWebToken`.
+
+### jakarta.ejb.SessionContext#isCallerInRole(String)
+This method MUST return true for any name that is included in the MP-JWT `"groups"` claim, as well as for any
+role name that has been mapped to a group name in the MP-JWT `"groups"` claim.
+
+### Overriding @LoginConfig from web.xml login-config
+If a deployment with a web.xml descriptor contains a `login-config` element, an MP-JWT implementation should view the
+web.xml metadata as an override to the deployment annotation.
+
+### jakarta.servlet.http.HttpServletRequest.getUserPrincipal()
+The `java.security.Principal` returned from this method MUST be an instance of `org.eclipse.microprofile.jwt.JsonWebToken`.
+
+### jakarta.servlet.http.HttpServletRequest#isUserInRole(String)
+This method MUST return true for any name that is included in the MP-JWT `"groups"` claim, as well as for any
+role name that has been mapped to a group name in the MP-JWT `"groups"` claim.
+
+### jakarta.security.jacc.PolicyContext.getContext("javax.security.auth.Subject.container")
+The `javax.security.auth.Subject` returned by the `PolicyContext.getContext(String key)` method with the standard
+`"javax.security.auth.Subject.container"` key MUST return a Subject that has a `java.security.Principal` of type
+`org.eclipse.microprofile.jwt.JsonWebToken` amongst its set of `Principal` s returned by `getPrincipals()`. Similarly,
+`Subject#getPrincipals(JsonWebToken.class)` must return a set with at least one value. This means that following code
+snipet must not throw an AssertionError:
+
+```java
+    Subject subject = (Subject) PolicyContext.getContext("javax.security.auth.Subject.container");
+    Set<? extends Principal> principalSet = subject.getPrincipals(JsonWebToken.class);
+    assert principalSet.size() > 0;
+```
